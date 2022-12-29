@@ -841,25 +841,27 @@
           <div class="customNavigation"><a class="fa prev fa-chevron-left fa-5x"></a> <a
               class="fa next fa-chevron-right fa-5x"></a></div>
           <div class="box-product product-carousel" id="newyear-carousel">
+            {% for i in editors_pick %} 
             <div class="slider-item">
               <div class="product-block product-thumb transition">
                 <div class="product-block-inner row">
                   <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img src="/static/image/cache/catalog/84241-120x1877942.jpg"
-                        title="Night of Happiness" alt="" class="img-responsive reg-image" /> <img
+                    <a href="/book-details/{{i.book_id}}"> <img src="/static/images/books/{{i.image}}"
+                        title="{{i.name}}" alt="" class="img-responsive reg-image" /> <img
                         class="img-responsive hover-image" src="/static/image/cache/catalog/84241-120x1877942.jpg"
-                        title="Night of Happiness" alt="" /> </a>
+                        title="{{i.name}}" alt="" /> </a>
 
-                    <div class="quickview-button" data-toggle="tooltip" title="Night of Happiness"> <a class="quickbox"
-                        href="indexafdf.php?route=product/quick_view&amp;product_id=51504"><i class="fa fa-eye"
+                    <div class="quickview-button" data-toggle="tooltip" title="{{i.name}}"> <a class="quickbox"
+                        href="/book-details/{{i.book_id}}"><i class="fa fa-eye"
                           aria-hidden="true"></i></a> </div>
                   </div>
                   <div class="product-details col-sm-7 col-xs-7">
                     <div class="caption">
-                      <h4><a href="book_details.html">Night of Happiness</a></h4>
-                      <a href="book_details.html">
+                      <h4><a href="/book-details/{{i.book_id}}">{{i.name}}</a></h4>
+                      <a href="/book-details/{{i.book_id}}">
                         <p class="author">By: Tabish Khair</p>
                       </a>
+                      {% if i.ratings ==0 %}
                       <div class="rating">
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
@@ -867,6 +869,55 @@
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                       </div>
+                      {% elif i.ratings==1 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==2 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==3 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==4 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==5 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                      </div>
+                      {% else %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% endif %}
 
                       <br>
                     </div>
@@ -874,7 +925,7 @@
                       <!-- <button type="button" class="addtocart" onclick="cart.add('51504', '1');"> <span>Read
                           Now</span></button> -->
                       <!-- Button trigger modal -->
-                      <a href="book_details.html">
+                      <a href="/book-details/{{i.book_id}}">
 
                       <button type="button" class="addtocart btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
@@ -889,479 +940,7 @@
                 </div>
               </div>
             </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/catalog/87364-120x1877942.jpg" title="If Only I Could Tell You" alt=""
-                        class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/87364-120x1877942.jpg" title="If Only I Could Tell You" alt="" />
-                    </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="If Only I Could Tell You"> <a
-                        class="quickbox" href="index9557.php?route=product/quick_view&amp;product_id=57697"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">If Only I Could Tell You</a></h4>
-                      <a href="book_details.html">
-                        <p class="author">By: Hannah Beckerman</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                      <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/inside-millitary-machines-discovery-explore-your-world-9781848108370-120x1877942.jpg"
-                        title="Inside Millitary Machines Discovery Explore Your World -" alt=""
-                        class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/inside-millitary-machines-discovery-explore-your-world-9781848108370-120x1877942.jpg"
-                        title="Inside Millitary Machines Discovery Explore Your World -" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Inside Millitary Machines Discovery Explore Your World -"> <a class="quickbox"
-                        href="indexf92b.php?route=product/quick_view&amp;product_id=11526"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">Inside Millitary
-                          Machines Discovery Explore Your World -</a></h4>
-                      <a href="indexc3cc.php?route=product/author/info&amp;author_id=7194">
-                        <p class="author">By: Steve Parker</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/robot-ki-laash-9789696010524-120x1877942.jpg" title="Robot Ki Laash" alt=""
-                        class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/robot-ki-laash-9789696010524-120x1877942.jpg" title="Robot Ki Laash"
-                        alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Robot Ki Laash"> <a class="quickbox"
-                        href="indexd8c7.php?route=product/quick_view&amp;product_id=28537"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">Robot Ki Laash</a></h4>
-                      <a href="indexa971.php?route=product/author/info&amp;author_id=18895">
-                        <p class="author">By: Ishtiaq Ahmad</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/catalog/sinister-scenes-the-joy-of-spooking-9781416934219-120x1877942.jpg"
-                        title="Sinister Scenes (The Joy of Spooking)" alt="" class="img-responsive reg-image" /> <img
-                        class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/sinister-scenes-the-joy-of-spooking-9781416934219-120x1877942.jpg"
-                        title="Sinister Scenes (The Joy of Spooking)" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Sinister Scenes (The Joy of Spooking)">
-                      <a class="quickbox" href="index4681.php?route=product/quick_view&amp;product_id=38634"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">Sinister Scenes (The Joy of
-                          Spooking)</a></h4>
-                      <a href="index871d.php?route=product/author/info&amp;author_id=27198">
-                        <p class="author">By: P.J. Bracegirdle</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/the-jefferson-key-9780553841428-120x1877942.jpg" title="The Jefferson Key -"
-                        alt="" class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/the-jefferson-key-9780553841428-120x1877942.jpg" title="The Jefferson Key -"
-                        alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="The Jefferson Key -"> <a class="quickbox"
-                        href="index3463.php?route=product/quick_view&amp;product_id=21624"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>s
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">The Jefferson Key -</a></h4>
-                      <a href="index6214.php?route=product/author/info&amp;author_id=9869">
-                        <p class="author">By: Steve Berry</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/catalog/9781444754575-120x1877942.jpg" title="Keeping Faith" alt=""
-                        class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/9781444754575-120x1877942.jpg" title="Keeping Faith" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Keeping Faith"> <a class="quickbox"
-                        href="index99a3.php?route=product/quick_view&amp;product_id=92255"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">Keeping Faith</a></h4>
-                      <a href="index99cb.php?route=product/author/info&amp;author_id=8335">
-                        <p class="author">By: Jodi Picoult</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/catalog/01.zeeshan/9780008139612-120x1877942.jpg" title="The Longevity Book"
-                        alt="" class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/01.zeeshan/9780008139612-120x1877942.jpg" title="The Longevity Book"
-                        alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="The Longevity Book"> <a class="quickbox"
-                        href="indexe464.php?route=product/quick_view&amp;product_id=94597"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">The Longevity Book</a></h4>
-                      <a href="index755a.php?route=product/author/info&amp;author_id=25189">
-                        <p class="author">By: Cameron Diaz</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="book_details.html"> <img
-                        src="/static/image/cache/catalog/9780008108427-120x1877942.jpg"
-                        title="An Ember in the Ashes: Book 1 (Ember Quartet)" alt="" class="img-responsive reg-image" />
-                      <img class="img-responsive hover-image" src="/static/image/cache/catalog/9780008108427-120x1877942.jpg"
-                        title="An Ember in the Ashes: Book 1 (Ember Quartet)" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="An Ember in the Ashes: Book 1 (Ember Quartet)"> <a class="quickbox"
-                        href="indexed92.php?route=product/quick_view&amp;product_id=51394"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="book_details.html">An Ember in the Ashes: Book
-                          1 (Ember Quartet)</a></h4>
-                      <a href="index4008.php?route=product/author/info&amp;author_id=22273">
-                        <p class="author">By: Sabaa Tahir</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                        <span>(5)</span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <a href="book_details.html">
-
-                        <button type="button" class="addtocart" onclick="cart.add('57697', '1');"> <span>Read
-                            Now</span></button>
-                        <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                          onclick="wishlist.add('57697');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Amerian-Innovations-25595"> <img
-                        src="/static/image/cache/amerian-innovations-9780007548774-120x1877942.jpg"
-                        title="Amerian Innovations          " alt="" class="img-responsive reg-image" /> <img
-                        class="img-responsive hover-image"
-                        src="/static/image/cache/amerian-innovations-9780007548774-120x1877942.jpg"
-                        title="Amerian Innovations          " alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Amerian Innovations          "> <a
-                        class="quickbox" href="index261d.php?route=product/quick_view&amp;product_id=25595"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="Amerian-Innovations-25595">Amerian Innovations </a></h4>
-                      <a href="indexe85b.php?route=product/author/info&amp;author_id=21944">
-                        <p class="author">By: Rivka Galchen</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('25595', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('25595');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Elmer-In-The-Snow"> <img
-                        src="/static/image/cache/catalog/isbndbimages/9781842707838_isbn-120x1877942.jpg"
-                        title="Elmer In The Snow" alt="" class="img-responsive reg-image" /> <img
-                        class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/isbndbimages/9781842707838_isbn-120x1877942.jpg"
-                        title="Elmer In The Snow" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Elmer In The Snow"> <a class="quickbox"
-                        href="index13e2.php?route=product/quick_view&amp;product_id=60884"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="Elmer-In-The-Snow">Elmer In The Snow</a></h4>
-                      <a href="index65d7.php?route=product/author/info&amp;author_id=4061">
-                        <p class="author">By: David Mckee</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('60884', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('60884');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="The-Enlightened-Leader-An-Introduction-To-The-Chakras-Of-Leader-42004"> <img
-                        src="/static/image/cache/catalog/the-enlightened-leader-an-introduction-to-the-chakras-of-leader-9780470713969-120x1877942.jpg"
-                        title="The Enlightened Leader An Introduction To The Chakras Of Leader" alt=""
-                        class="img-responsive reg-image" /> <img class="img-responsive hover-image"
-                        src="/static/image/cache/catalog/the-enlightened-leader-an-introduction-to-the-chakras-of-leader-9780470713969-120x1877942.jpg"
-                        title="The Enlightened Leader An Introduction To The Chakras Of Leader" alt="" /> </a>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="The Enlightened Leader An Introduction To The Chakras Of Leader"> <a class="quickbox"
-                        href="indexae10.php?route=product/quick_view&amp;product_id=42004"><i class="fa fa-eye"
-                          aria-hidden="true"></i></a> </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="The-Enlightened-Leader-An-Introduction-To-The-Chakras-Of-Leader-42004">The
-                          Enlightened Leader An Introduction To The Chakras Of Leader</a></h4>
-                      <a href="index27de.php?route=product/author/info&amp;author_id=28149">
-                        <p class="author">By: peter ten hoopen</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('42004', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('42004');"><img height="18" src="/static/image/icons/wishlist.png"> </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -1369,7 +948,7 @@
     <span class="latest_default_width" style="display:none; visibility:hidden"></span>
     <div class="box bestseller">
       <div class="container">
-        <div class="box-heading">Top Stories <a href="books_all.html">
+        <div class="box-heading">Romance <a href="books_all.html">
             <button style="background-color: #d47e7d; border: 1px solid #d47e7d" type="button"
               data-loading-text="Loading..." class="btn btn-primary btn-lg btn-block viewall"> View All </button>
           </a>
@@ -1378,24 +957,26 @@
           <div class="customNavigation"><a class="fa prev fa-chevron-left fa-5x"></a> <a
               class="fa next fa-chevron-right fa-5x"></a></div>
           <div class="box-product product-carousel" id="bestseller-carousel">
+            {% for i in romance %}
             <div class="slider-item">
               <div class="product-block product-thumb transition">
                 <div class="product-block-inner row">
                   <div class="image col-sm-5 col-xs-5">
-                    <a href="Dancing-The-Dream-46833"> <img src="/static/image/cache/catalog/6137-min-120x1877942.jpg"
+                    <a href="/book-details/{{i.book_id}}"> <img src="/static/images/books/{{i.image}}"
                         title="Dancing The Dream" alt="" class="img-responsive" /></a>
 
                     <div class="quickview-button" data-toggle="tooltip" title="Dancing The Dream">
-                      <a class="quickbox" href="indexf79a.php?route=product/quick_view&amp;product_id=46833"><i
+                      <a class="quickbox" href="#"><i
                           class="fa fa-eye" aria-hidden="true"></i></a>
                     </div>
                   </div>
                   <div class="product-details col-sm-7 col-xs-7">
                     <div class="caption">
-                      <h4><a href="Dancing-The-Dream-46833">Dancing The Dream</a></h4>
-                      <a href="index46d0.php?route=product/author/info&amp;author_id=12134">
+                      <h4><a href="/book-details/{{i.book_id}}">{{i.name}}</a></h4>
+                      <a href="/book-details/{{i.book_id}}">
                         <p class="author">By: Michael Jackson</p>
                       </a>
+                      {% if i.ratings ==0 %}
                       <div class="rating">
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
@@ -1403,6 +984,55 @@
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                       </div>
+                      {% elif i.ratings==1 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==2 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==3 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==4 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==5 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                      </div>
+                      {% else %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% endif %}
                       <br>
 
                     </div>
@@ -1417,473 +1047,7 @@
                 </div>
               </div>
             </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="House-of-Secrets-37163"> <img
-                        src="/static/image/cache/catalog/house-of-secrets-9780062192479-120x1877942.jpg"
-                        title="House of Secrets" alt="" class="img-responsive" /></a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="House of Secrets">
-                      <a class="quickbox" href="index0154.php?route=product/quick_view&amp;product_id=37163"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="House-of-Secrets-37163">House of Secrets</a></h4>
-                      <a href="indexf275.php?route=product/author/info&amp;author_id=20873">
-                        <p class="author">By: Chris Columbus</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('37163', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('37163');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="the-wheel-of-time-9780140196047"> <img
-                        src="/static/image/cache/01%20ZEESHAN/The-Wheel-of-Time-120x1877942.jpg" title="The Wheel of Time"
-                        alt="" class="img-responsive" /></a>
-
-
-                    <div class="quickview-button" data-toggle="tooltip" title="The Wheel of Time">
-                      <a class="quickbox" href="index191b.php?route=product/quick_view&amp;product_id=90695"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="the-wheel-of-time-9780140196047">The Wheel of Time</a></h4>
-                      <a href="indexc3b7.php?route=product/author/info&amp;author_id=188">
-                        <p class="author">By: Carlos Castaneda</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('90695', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('90695');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Stephenie-Meyer_-The-Unauthorized-Biography-of-the-Creator-of-the-Twilight-Saga-34609">
-                      <img
-                        src="/static/image/cache/stephenie-meyer-the-unauthorized-biography-of-the-creator-of-the-twilight-saga-rp9780312638290-120x1877942.jpg"
-                        title="Stephenie Meyer: The Unauthorized Biography of the Creator of the Twilight Saga" alt=""
-                        class="img-responsive" /></a>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Stephenie Meyer: The Unauthorized Biography of the Creator of the Twilight Saga">
-                      <a class="quickbox" href="index82da.php?route=product/quick_view&amp;product_id=34609"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a
-                          href="Stephenie-Meyer_-The-Unauthorized-Biography-of-the-Creator-of-the-Twilight-Saga-34609">Stephenie
-                          Meyer: The Unauthorized Biography of the Creator of the Twilight Saga</a></h4>
-                      <a href="#">
-                        <p class="author">By: N/A</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('34609', '0');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('34609');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="the-land-of-ataturk-rp1000000005427"> <img
-                        src="/static/image/cache/the-land-of-ataturk-1000000005427-120x1877942.jpg"
-                        title="The Land of Ataturk" alt="" class="img-responsive" /></a>
-
-
-                    <div class="quickview-button" data-toggle="tooltip" title="The Land of Ataturk">
-                      <a class="quickbox" href="index89d1.php?route=product/quick_view&amp;product_id=20876"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="the-land-of-ataturk-rp1000000005427">The Land of Ataturk</a></h4>
-                      <a href="index1f4d.php?route=product/author/info&amp;author_id=20208">
-                        <p class="author">By: Manzar Naqvi</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('20876', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('20876');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a
-                      href="Beyond-Atkins_-A-Healthier-More-Balanced-Approach-to-a-Low-Carbohydrate-Way-of-Eating-3273">
-                      <img
-                        src="/static/image/cache/catalog/beyond-atkins-a-healthier-more-balanced-approach-to-a-low-carbohydrate-way-of-eating-9781416503552-120x1877942.jpg"
-                        title="Beyond Atkins: A Healthier More Balanced Approach to a Low Carbohydrate Way of Eating"
-                        alt="" class="img-responsive" /></a>
-
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Beyond Atkins: A Healthier More Balanced Approach to a Low Carbohydrate Way of Eating">
-                      <a class="quickbox" href="index975c.php?route=product/quick_view&amp;product_id=3273"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a
-                          href="Beyond-Atkins_-A-Healthier-More-Balanced-Approach-to-a-Low-Carbohydrate-Way-of-Eating-3273">Beyond
-                          Atkins: A Healthier More Balanced Approach to a Low Carbohydrate Way of Eating</a></h4>
-                      <a href="#">
-                        <p class="author">By: N/A</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('3273', '0');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('3273');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="who-runs-this-place-the-anatomy-of-britain-in-the-21st-century-rp9780719565649"> <img
-                        src="/static/image/cache/catalog/place-120x1877942.jpg"
-                        title="Who Runs This Place? : The Anatomy of Britain in the 21st Century" alt=""
-                        class="img-responsive" /></a>
-                    <span class="saleicon sale">48%</span>
-
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Who Runs This Place? : The Anatomy of Britain in the 21st Century">
-                      <a class="quickbox" href="index96c5.php?route=product/quick_view&amp;product_id=52636"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="who-runs-this-place-the-anatomy-of-britain-in-the-21st-century-rp9780719565649">Who
-                          Runs This Place? : The Anatomy of Britain in the 21st Century</a></h4>
-                      <a href="index4950.php?route=product/author/info&amp;author_id=89">
-                        <p class="author">By: Anthony Sampson</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('52636', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('52636');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Who-Runs-This-Place-The-Anatomy-of-Britain-in-the-21st-Century-46932"> <img
-                        src="/static/image/cache/catalog/82032-120x1877942.jpg"
-                        title="Who Runs This Place The Anatomy of Britain in the 21st Century" alt=""
-                        class="img-responsive" /></a>
-
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Who Runs This Place The Anatomy of Britain in the 21st Century">
-                      <a class="quickbox" href="index43e4.php?route=product/quick_view&amp;product_id=46932"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="Who-Runs-This-Place-The-Anatomy-of-Britain-in-the-21st-Century-46932">Who Runs This
-                          Place The Anatomy of Britain in the 21st Century</a></h4>
-                      <a href="index4950.php?route=product/author/info&amp;author_id=89">
-                        <p class="author">By: Anthony Sampson</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('46932', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('46932');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="check-mate-rp1230000009021"> <img
-                        src="/static/image/cache/catalog/CHECK%20MATE%20001-120x1877942.jpg" title="CHECK MATE " alt=""
-                        class="img-responsive" /></a>
-                    <span class="saleicon sale">76%</span>
-
-
-                    <div class="quickview-button" data-toggle="tooltip" title="CHECK MATE ">
-                      <a class="quickbox" href="indexc3ad.php?route=product/quick_view&amp;product_id=103399"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="check-mate-rp1230000009021">CHECK MATE </a></h4>
-                      <a href="index306d.php?route=product/author/info&amp;author_id=39436">
-                        <p class="author">By: Mudaasir Butt</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('103399', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('103399');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Guilty-Wives-32988"> <img
-                        src="/static/image/cache/catalog/guilty-wives-9781455522187-120x1877942.jpg" title="Guilty Wives"
-                        alt="" class="img-responsive" /></a>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Guilty Wives">
-                      <a class="quickbox" href="index622d.php?route=product/quick_view&amp;product_id=32988"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="Guilty-Wives-32988">Guilty Wives</a></h4>
-                      <a href="index1a4b.php?route=product/author/info&amp;author_id=715">
-                        <p class="author">By: James Patterson</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('32988', '0');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('32988');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="Blind-Spot_-The-Secret-History-of-American-Counterterrorism-48261"> <img
-                        src="/static/image/cache/catalog/14000-120x1877942.jpg"
-                        title="Blind Spot: The Secret History of American Counterterrorism" alt=""
-                        class="img-responsive" /></a>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Blind Spot: The Secret History of American Counterterrorism">
-                      <a class="quickbox" href="index8314.php?route=product/quick_view&amp;product_id=48261"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="Blind-Spot_-The-Secret-History-of-American-Counterterrorism-48261">Blind Spot: The
-                          Secret History of American Counterterrorism</a></h4>
-                      <a href="index45b7.php?route=product/author/info&amp;author_id=10566">
-                        <p class="author">By: Timothy Naftali</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('48261', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('48261');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="oriental-carpets-9780304321766"> <img
-                        src="/static/image/cache/catalog/adnan%20khan/RP9780304321766-120x1877942.jpg"
-                        title="Oriental Carpets" alt="" class="img-responsive" /></a>
-
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Oriental Carpets">
-                      <a class="quickbox" href="indexc4c9.php?route=product/quick_view&amp;product_id=94009"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="oriental-carpets-9780304321766">Oriental Carpets</a></h4>
-                      <a href="index799e.php?route=product/author/info&amp;author_id=4325">
-                        <p class="author">By: Michele Campana</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('94009', '1');">
-                        <span>Read Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('94009');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -1901,12 +1065,13 @@
           <div class="customNavigation"><a class="fa prev fa-chevron-left fa-5x"></a> <a
               class="fa next fa-chevron-right fa-5x"></a></div>
           <div class="box-product product-carousel" id="justin-carousel">
+            {% for i in new_release %}
             <div class="slider-item">
               <div class="product-block product-thumb transition">
                 <div class="product-block-inner row">
                   <div class="image col-sm-5 col-xs-5">
-                    <a href="index2f74.php?route=product/product&amp;product_id=104391"> <img
-                        src="/static/image/cache/catalog/RP9780375413186-120x1877942.jpg"
+                    <a href="/book-details/{{i.book_id}}"> <img
+                        src="/static/images/books/{{i.image}}"
                         title="The Spiral Staircase: My Climb Out of Darkness" alt="" class="img-responsive" /></a>
                     <span class="saleicon newarrival">NEW</span>
 
@@ -1918,11 +1083,11 @@
                   </div>
                   <div class="product-details col-sm-7 col-xs-7">
                     <div class="caption">
-                      <h4><a href="index2f74.php?route=product/product&amp;product_id=104391">The Spiral Staircase: My
-                          Climb Out of Darkness</a></h4>
-                      <a href="indexa72c.php?route=product/author/info&amp;author_id=2908">
+                      <h4><a href="/book-details/{{i.book_id}}">{{i.name}}</a></h4>
+                      <a href="/book-details/{{i.book_id}}">
                         <p class="author">By: Karen Armstrong</p>
                       </a>
+                      {% if i.ratings ==0 %}
                       <div class="rating">
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
@@ -1930,6 +1095,55 @@
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                         <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
                       </div>
+                      {% elif i.ratings==1 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==2 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==3 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==4 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% elif i.ratings==5 %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star on fa-stack-2x"></i></span>
+                      </div>
+                      {% else %}                      
+                      <div class="rating">
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
+                      </div>
+                      {% endif %}
                       <br>
 
                     </div>
@@ -1944,493 +1158,7 @@
                 </div>
               </div>
             </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="index7fbb.php?route=product/product&amp;product_id=104390"> <img
-                        src="/static/image/cache/catalog/goril-120x1877942.jpg"
-                        title="Good Night, Gorilla Book and Plush Package" alt="" class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Good Night, Gorilla Book and Plush Package">
-                      <a class="quickbox" href="index4653.php?route=product/quick_view&amp;product_id=104390"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="index7fbb.php?route=product/product&amp;product_id=104390">Good Night, Gorilla Book
-                          and Plush Package</a></h4>
-                      <a href="indexedd4.php?route=product/author/info&amp;author_id=35764">
-                        <p class="author">By: Peggy Rathmann</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104390', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104390');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="index2ac2.php?route=product/product&amp;product_id=104389"> <img
-                        src="/static/image/cache/catalog/RP9781861970152-120x1877942.jpg"
-                        title="Pocket World in Figures: 1998" alt="" class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Pocket World in Figures: 1998">
-                      <a class="quickbox" href="index7217.php?route=product/quick_view&amp;product_id=104389"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="index2ac2.php?route=product/product&amp;product_id=104389">Pocket World in Figures:
-                          1998</a></h4>
-                      <a href="index7997.php?route=product/author/info&amp;author_id=19622">
-                        <p class="author">By: The Economist</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104389', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104389');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexa641.php?route=product/product&amp;product_id=104388"> <img
-                        src="/static/image/cache/catalog/RP9788174366597-120x1877942.jpg"
-                        title="Zero Point Bombay: In and Around Horniman Circle Hardcover – January 1, 2008" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Zero Point Bombay: In and Around Horniman Circle Hardcover – January 1, 2008">
-                      <a class="quickbox" href="index6c62.php?route=product/quick_view&amp;product_id=104388"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexa641.php?route=product/product&amp;product_id=104388">Zero Point Bombay: In and
-                          Around Horniman Circle Hardcover – January 1, 2008</a></h4>
-                      <a href="index735b.php?route=product/author/info&amp;author_id=18223">
-                        <p class="author">By: Kamala Ganesh</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104388', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104388');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexba64.php?route=product/product&amp;product_id=104387"> <img
-                        src="/static/image/cache/catalog/RP1230000009044-120x1877942.jpeg"
-                        title=" Dimensions of Pakistan-India relations" alt="" class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip" title=" Dimensions of Pakistan-India relations">
-                      <a class="quickbox" href="index6581.php?route=product/quick_view&amp;product_id=104387"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexba64.php?route=product/product&amp;product_id=104387"> Dimensions of
-                          Pakistan-India relations</a></h4>
-                      <a href="index32ad.php?route=product/author/info&amp;author_id=39932">
-                        <p class="author">By: Ijaz Hussain</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104387', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104387');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="index1e04.php?route=product/product&amp;product_id=104386"> <img
-                        src="/static/image/cache/catalog/RP9782884790659-120x1877942.jpg"
-                        title="Basics Design: Images Paperback – October 10, 2005" alt="" class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Basics Design: Images Paperback – October 10, 2005">
-                      <a class="quickbox" href="indexc9db.php?route=product/quick_view&amp;product_id=104386"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="index1e04.php?route=product/product&amp;product_id=104386">Basics Design: Images
-                          Paperback – October 10, 2005</a></h4>
-                      <a href="indexaa80.php?route=product/author/info&amp;author_id=39931">
-                        <p class="author">By: Gavin Ambrose</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104386', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104386');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexde32.php?route=product/product&amp;product_id=104385"> <img
-                        src="/static/image/cache/catalog/RP9781509800803-120x1877942.jpg"
-                        title="A Different Kind of Daughter: The Girl Who Hid from the Taliban in Plain Sight" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="A Different Kind of Daughter: The Girl Who Hid from the Taliban in Plain Sight">
-                      <a class="quickbox" href="index5d53.php?route=product/quick_view&amp;product_id=104385"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexde32.php?route=product/product&amp;product_id=104385">A Different Kind of
-                          Daughter: The Girl Who Hid from the Taliban in Plain Sight</a></h4>
-                      <a href="indexc61a.php?route=product/author/info&amp;author_id=23251">
-                        <p class="author">By: Maria Toorpakai , Katharine Holstein</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104385', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104385');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexb291.php?route=product/product&amp;product_id=104384"> <img
-                        src="/static/image/cache/catalog/RP9788170492085-120x1877942.jpg"
-                        title="Corporate Warriors: The Rise of the Privatized Military Industry" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Corporate Warriors: The Rise of the Privatized Military Industry">
-                      <a class="quickbox" href="index703d.php?route=product/quick_view&amp;product_id=104384"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexb291.php?route=product/product&amp;product_id=104384">Corporate Warriors: The
-                          Rise of the Privatized Military Industry</a></h4>
-                      <a href="index4d8d.php?route=product/author/info&amp;author_id=14559">
-                        <p class="author">By: P. W. Singer</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104384', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104384');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a
-                      href="defence-and-consensus-the-domestic-aspects-of-western-security-international-institute-for-strategic-studies-conference-papers-hardcover-%e2%80%93-1-dec.-1983-rp9780333365960">
-                      <img src="/static/image/cache/catalog/RP9780333365960-120x1877942.jpeg"
-                        title="Defence and Consensus: The Domestic Aspects of Western Security (International Institute for Strategic Studies conference papers) Hardcover – 1 Dec. 1983"
-                        alt="" class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Defence and Consensus: The Domestic Aspects of Western Security (International Institute for Strategic Studies conference papers) Hardcover – 1 Dec. 1983">
-                      <a class="quickbox" href="index39c1.php?route=product/quick_view&amp;product_id=104383"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a
-                          href="defence-and-consensus-the-domestic-aspects-of-western-security-international-institute-for-strategic-studies-conference-papers-hardcover-%e2%80%93-1-dec.-1983-rp9780333365960">Defence
-                          and Consensus: The Domestic Aspects of Western Security (International Institute for Strategic
-                          Studies conference papers) Hardcover – 1 Dec. 1983</a></h4>
-                      <a href="index376a.php?route=product/author/info&amp;author_id=39930">
-                        <p class="author">By: CHRISTOPH BERTRAM</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104383', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104383');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="index2415.php?route=product/product&amp;product_id=104382"> <img
-                        src="/static/image/cache/catalog/RP9780713997156-120x1877942.jpg" title="Napoleons Wars" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip" title="Napoleons Wars">
-                      <a class="quickbox" href="indexa440.php?route=product/quick_view&amp;product_id=104382"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="index2415.php?route=product/product&amp;product_id=104382">Napoleons Wars</a></h4>
-                      <a href="indexcf66.php?route=product/author/info&amp;author_id=38209">
-                        <p class="author">By: Charles Esdaile</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104382', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104382');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexef23.php?route=product/product&amp;product_id=104381"> <img
-                        src="/static/image/cache/catalog/RP9780747215530-120x1877942.jpg"
-                        title="Pale Blue Dot: Vision of the Human Future in Space Hardcover – 4 May 1995" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Pale Blue Dot: Vision of the Human Future in Space Hardcover – 4 May 1995">
-                      <a class="quickbox" href="index2951.php?route=product/quick_view&amp;product_id=104381"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexef23.php?route=product/product&amp;product_id=104381">Pale Blue Dot: Vision of
-                          the Human Future in Space Hardcover – 4 May 1995</a></h4>
-                      <a href="index9361.php?route=product/author/info&amp;author_id=187">
-                        <p class="author">By: Carl Sagan</p>
-                      </a>
-
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104381', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104381');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slider-item">
-              <div class="product-block product-thumb transition">
-                <div class="product-block-inner row">
-                  <div class="image col-sm-5 col-xs-5">
-                    <a href="indexa119.php?route=product/product&amp;product_id=104380"> <img
-                        src="/static/image/cache/catalog/RP9788187107699-120x1877942.jpg"
-                        title="Birds of Prey of the Indian Subcontinent Hardcover – November 30, 2008" alt=""
-                        class="img-responsive" /></a>
-
-                    <span class="saleicon newarrival">NEW</span>
-
-                    <div class="quickview-button" data-toggle="tooltip"
-                      title="Birds of Prey of the Indian Subcontinent Hardcover – November 30, 2008">
-                      <a class="quickbox" href="index9abb.php?route=product/quick_view&amp;product_id=104380"><i
-                          class="fa fa-eye" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="product-details col-sm-7 col-xs-7">
-                    <div class="caption">
-                      <h4><a href="indexa119.php?route=product/product&amp;product_id=104380">Birds of Prey of the
-                          Indian Subcontinent Hardcover – November 30, 2008</a></h4>
-                      <a href="index8dfc.php?route=product/author/info&amp;author_id=11526">
-                        <p class="author">By: Rishad Naoroji</p>
-                      </a>
-                      <div class="rating">
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                        <span class="fa fa-stack"><i class="fa fa-star off fa-stack-2x"></i></span>
-                      </div>
-                      <br>
-
-                    </div>
-                    <div class="button-group button-group-category no-slider-buttons">
-                      <button type="button" class="addtocart" onclick="cart.add('104380', '1');"> <span>Read
-                          Now</span></button>
-                      <button type="button" class="wishlist" data-toggle="tooltip" title="Add to Wish List"
-                        onclick="wishlist.add('104380');"><img height="18" src="/static/image/icons/wishlist.png">
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -2441,7 +1169,7 @@
     <span class="latest_default_width" style="display:none; visibility:hidden"></span>
 
     <span class="latest_default_width" style="display:none; visibility:hidden"></span>
-    <div class="box shop-by-category">
+    <!-- <div class="box shop-by-category">
       <div class="container">
         <div class="box-heading">Shop by Category</div>
         <div class="box-content ">
@@ -3076,7 +1804,7 @@
       <div class="container">
         <div class="box-heading">Books by Pakistani Publishers</div>
       </div>
-    </div>
+    </div> -->
     <div id="banner9" class=" owl-carousel ">
       <div class="item">
         <a href="books/local-publisher-books/nai-soch-publishers"><img
